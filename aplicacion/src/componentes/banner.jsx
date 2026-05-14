@@ -1,11 +1,15 @@
 function Banner() {
   return (
     <section className="banner">
-      <h1>Bienvenido a TecnoStore</h1>
+      <div className="banner-content">
+        <h1>La mejor tecnología para vos</h1>
 
-      <p>Los mejores productos tecnológicos</p>
+        <p>
+          Descubrí productos modernos, potentes y al mejor precio.
+        </p>
 
-      <button>Comprar ahora</button>
+        <button>Ver Productos</button>
+      </div>
     </section>
   );
 }
