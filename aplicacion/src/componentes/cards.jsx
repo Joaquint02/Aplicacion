@@ -5,14 +5,28 @@ function Cards({ productos }) {
   const [favoritos, setFavoritos] = useState([]);
 
   const agregarFavorito = (producto) => {
-    setFavoritos([...favoritos, producto.nombre]);
+
+    const existe = favoritos.find(
+      (fav) => fav.nombre === producto.nombre
+    );
+
+    if (!existe) {
+      setFavoritos([...favoritos, producto]);
+    }
   };
 
   return (
+
     <section className="cards-section" id="productos">
 
       <div className="cards-title">
+
         <h2>Nuestros Productos</h2>
+
+        <span className="contador">
+          Favoritos: {favoritos.length}
+        </span>
+
       </div>
 
       <div className="cards-container">
@@ -39,7 +53,7 @@ function Cards({ productos }) {
               <button
                 onClick={() => agregarFavorito(producto)}
               >
-                Agregar a favoritos
+                ❤️ Agregar a favoritos
               </button>
 
             </div>
@@ -54,10 +68,21 @@ function Cards({ productos }) {
         <h3>Tus favoritos</h3>
 
         {favoritos.length === 0 ? (
+
           <p>No hay favoritos todavía</p>
+
         ) : (
+
           favoritos.map((fav, index) => (
-            <p key={index}>⭐ {fav}</p>
+
+            <div className="favorito-item" key={index}>
+
+              <span>⭐ {fav.nombre}</span>
+
+              <span>{fav.precio}</span>
+
+            </div>
+
           ))
         )}
 
